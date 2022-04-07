@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #root > div {
+        display: grid;
+        height: 100vh;
+        grid-template: auto 1fr auto / minmax(150px, 25%) 1fr;
+      }
+      header {
+        padding: 2rem;
+        grid-column: 1 / 4;
+      }
+      .left-sidebar {
+        background: rgb(223, 223, 223);
+      }
+      main {
+        background: rgb(216, 216, 216);
+      }
+      footer {
+        padding: 2rem;
+        text-align: center;
+        grid-column: 1 / 4;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script>
+      const Reactt = {
+        createElement: new Proxy(
+          {},
+          {
+            get(target, property, receiver) {
+              return (children, attrs) => {
+                const el = document.createElement(property);
+                for (let attr in attrs) {
+                  el.setAttribute(attr, attrs[attr]);
+                }
+                for (let child of Array.isArray(children)
+                  ? children
+                  : [children]) {
+                  el.appendChild(
+                    typeof child === "string"
+                      ? document.createTextNode(child)
+                      : child
+                  );
+                }
+                return el;
+              };
+            },
+          }
+        ),
+        render: (el, root) => {
+          root.appendChild(el);
+        },
+      };
+      const h = Reactt.createElement;
+      const App = h.div([
+        h.header([h.h1("LOGO")]),
+        h.div([], { class: "left-sidebar" }),
+        h.main([]),
+        h.footer(["Footer — 2022", " hello"]),
+      ]);
+      Reactt.render(App, root);
+    </script>
+  </body>
+</html>

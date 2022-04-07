@@ -1,0 +1,19 @@
+{
+  "name": "f2e-adv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "promise.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon testXHR"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,23 @@
+/* css reset */
+@import './reset.css';
+
+#root{
+  font-size: 2em;
+  margin: 4em auto;
+  max-width: 460px;
+}
+#root > div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px rgb(238, 238, 238) solid;
+  min-height: 300px;
+  flex-direction: column;
+  padding: 2em 0;
+}
+
+button{
+  margin: 20px 0;
+  cursor: pointer;
+  font-size: 16px;
+}

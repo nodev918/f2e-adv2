@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN React Boilerplate</title>
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <link href="./css/style.css" rel="stylesheet">
+    <!-- <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script> -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="module" src="/js/main.js"></script>
+    <!-- <script type="module" src="/js/demo/trans.js"></script> -->
+    <script>
+        function onError(err) {
+          console.error('Error registering service-worker:', err)
+          document.getElementById('root').innerText = err.toString()
+        }
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
+            .then(registration => {
+              window.serviceWorkerRegistration = registration
+            })
+            .catch(onError)
+        } else {
+          onError('Browser does not support service workers :-(')
+        }
+        // registration.unregister() 取消註冊
+        // 控制 > 應用程式 > Service Workers  
+    </script>
+</body>
+</html>

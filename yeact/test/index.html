@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create-your-own-react</title>
+    <script
+      crossorigin="true"
+      src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"
+    ></script>
+    <!-- <script src="babel.min.js"></script> -->
+  </head>
+  <body>
+    <script type="text/babel" src="createElement.js"></script>
+    <script>
+      const React = {
+        createElement,
+        render,
+      };
+
+      // /* ver js */
+      // const element = React.createElement(
+      //   "div",
+      //   { id: "foo" },
+      //   React.createElement("a", null, "hello"),
+      //   React.createElement("br"),
+      //   React.createElement("div", null, "world")
+      // );
+
+      /* ver jsx */
+      const element = React.createElement(
+        "div",
+        { style: "background: salmon" },
+        React.createElement("h1", null, "Hello World"),
+        React.createElement("h2", { style: "text-align:right" }, "from Yeact")
+      );
+
+      // /* ver jsx */
+      // const element = (
+      //   <div style="background: salmon">
+      //     <h1>Hello World</h1>
+      //     <h2 style="text-align:right">from Didact</h2>
+      //   </div>
+      // );
+
+      React.render(element, document.body);
+    </script>
+  </body>
+</html>
